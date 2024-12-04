@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ wilaya_name }} Jobs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+
+        img {
+            display: block;
+            margin-top: 10px;
+            max-width: 100%;
+            height: auto;
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #007bff;
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ wilaya_name }} Jobs</h1>
+
+    <ul>
+        {% for job in jobs %}
+        <li>
+            <a href="{{ job.Link }}" target="_blank">{{ job.Title }}</a><br>
+            {{ job.Description }}<br>
+            <img src="{{ job.Image }}" alt="{{ job.Title }}">
+        </li>
+        {% endfor %}
+    </ul>
+
+    <a href="/" class="back-link">Back to Wilaya List</a>
+</body>
+</html>
