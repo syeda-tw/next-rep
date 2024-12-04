@@ -1,33 +1,28 @@
-'use client'
+"use client";
 
-import { useClerk } from '@clerk/nextjs';
+import { useClerk } from "@clerk/nextjs";
+import Navbar from "../components/Navbar";
 
 const DashboardPage = () => {
-  const { signOut } = useClerk(); // Use the useClerk hook to access signOut
+  const { signOut } = useClerk();
 
-  // Sign out handler
   const handleSignOut = async () => {
     try {
-      // Sign out from all sessions (use sessionId for specific sessions)
-      await signOut({ 
-        // Optionally, pass a sessionId if you want to target a specific session.
-        // sessionId: 'your-session-id-here', 
-      });
-      
-      // Redirect to sign-in page after successful sign-out
-      window.location.href = '/auth/sign-in'; 
+      await signOut({
+     });
+      window.location.href = "/auth/sign-in";
     } catch (error) {
       console.error("Sign out error: ", error);
     }
   };
 
   return (
-    <div>
+    <>
+      <Navbar />
       <h1>Welcome to your Dashboard</h1>
       <p>Only authenticated users can see this page.</p>
-      {/* Button to trigger sign-out */}
       <button onClick={handleSignOut}>Sign Out</button>
-    </div>
+    </>
   );
 };
 
